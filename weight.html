@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style-size.css">
+    <link rel="stylesheet" type="text/css" href="style-layout.css">
+    <link rel="stylesheet" type="text/css" href="style-presentation2.css">
+    <script src="modal_calculator.js" defer></script>
+    <script src="D_day.js" defer></script>
+    <script src="modal_login.js" defer></script>
+    <script src="fade_in_top.js" defer></script>
+    <script src="date.js" defer></script>
+    <title>헬스케어 웹사이트</title>
+</head>
+<body style="height:100vh;">
+    <div class="wrap">
+        <header id="header">
+            <div class="flex-box">
+            <a id="logo" href="main.html"> GG </a>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">운동 종류</a>
+                            <ul class="submenu">
+                                <li><a href="diet.html">다이어트</a></li>
+                                <li><a href="weight.html">근력 운동</a></li>
+                                <li><a href="usanso.html">유산소 운동</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영양 정보</a>
+                            <ul class="submenu">
+                                <li><a href="dietfood.html">좋은식단</a></li>
+                                <li><a href="worstfood.html">안좋은식단</a></li>
+                                <li><a href="calculator.html"id="openmodal_calculator">칼로리 계산기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="memo.html">나의 메모</a>
+                        </li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                        <li><a href="gesi.html">공지사항</a></li>
+                        <li><a href="#" id="openprompt_D_day" onclick="D_day()">D-DAY:</a></li>
+                        <li class="between"><span id="count"></span></li>
+                        <li class="right"><a href="#" id="openmodal_login" onclick="openLoginModal()">로그인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="modalpage_login" class="hidden">
+            <div id="modalcenter_login">
+                <form id="login-form" onsubmit="submitLoginForm(event)">
+                    <h1>LOGIN</h1>
+                    <input id="username" type="email" placeholder="Email" class="input">
+                    <input id="password" type="password" placeholder="password" class="input">
+                    <button type="submit">Login</button>
+                </form>
+                <span id="closemodal_login" onclick="closeLoginModal()">&times;</span>
+            </div>
+    </div>
+        <div class="photo">
+          <div class="photos">
+            <img src="데드리프트.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">1. 데드리프트(등)</div>
+          <div class="photos" id="explain">
+            데드리프트(deadlift)는 가장 대표적인 웨이트<br> 트레이닝 운동 중 하나로, 바닥에 놓인 바벨을<br>
+            잡고 팔을 구부리지 않은 자세로 엉덩이 높이까지<br> 들어 올리는 식으로 행한다.<br>
+          </div>
+          <div class="photos">
+            <img src="스쿼트.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">2. 스쿼트(하체)</div>
+          <div class="photos" id="explain">
+            스쿼트(squat)는 가장 대표적인 웨이트<br>
+            트레이닝 운동 중 하나로, 바벨,덤벨을 들거나<br> 맨몸으로 무릎 관절을 굽혔다 펴는 동작을 반복<br>
+            함으로써 하반신의 근육을 성장시킨다
+        </div>
+          <div class="photos">
+            <img src="벤치프레스.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">3. 벤치 프레스(가슴,삼두)</div>
+          <div class="photos" id="explain">
+            벤치 프레스(bench press)는 가장 대표적인 웨이트<br> 트레이닝 중 하나로, 벤치에 등을 대고 누워서<br>
+            바벨 및 덤벨을 가슴 높이까지 내렸다가 굽혔던<br> 팔꿈치를 쭉 펴면서 들어올리는 방식으로 실시한다<br>
+            팔꿈치와 무릎이 구부러지지 않도록 주의합니다.
+          </div>
+          <div class="photos">
+            <img src="숄더프레스.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">4. 숄더 프레스(어깨)</div>
+          <div class="photos" id="explain">
+            숄더 프레스는 일어나서 또는 앉아서 진행 할 수 있습니다.<br>
+            먼저 가슴을 열어준 다음 덤벨을 들어 귀쪽에 위치 시킵니다<br> 팔꿈치를 피면서 덤벨을 머리 위로 들어줍니다. <br> 머리 위로 올린 덤벨을 다시 처음 위치로 천천히 내려줍니다.
+          </div>
+          <div class="photos">
+            <img src="바벨컬.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">5. 바벨컬(이두)</div>
+          <div class="photos" id="explain">
+            무산소 운동의 하나로 이두근을 키우는데 필수적인<br> 운동입니다. 일반적으로 바벨과 덤벨 사용이 둘다<br>
+            가능한 운동입니다. 바벨을 들고 선 상태에서 이두근<br>
+            의 당기는 힘을 이용해 바벨을 들어올립니다 더이상<br>팔꿈치가 접혀지지 않는 한까지 이두근에 압박을<br> 준 뒤 천천히 바벨을 내려 준비자세로 돌아갑니다.
+          </div>
+
+        </div>
+        
+
+</body>
+</html>

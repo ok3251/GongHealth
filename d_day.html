@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>D-day 계산기</title>
+	</head>
+	<body>
+		<h1>D-DAY</h1>
+		년도<input type="number" id="year" value="2023"><br>
+		월&nbsp;&nbsp;&nbsp;<input type="number" id="month" min="1" max="12" value="01"><br>
+		일&nbsp;&nbsp;&nbsp;<input type="number" id="day" min="1" max="31" value="15" >
+		<button onclick="setting()">확인</button>
+		<button onclick="main()">초기화</button>
+		<div id="count"></div>
+
+<script>	// D-Day
+var Time;
+
+function setting() {
+	clearInterval(Time);
+
+	const year = document.getElementById('year').value;
+	const month = document.getElementById('month').value;
+	const ill = document.getElementById('day').value;
+
+	const dday = new Date(year, month-1, ill).getTime();
+
+	Time = setInterval(function() {
+		const today = new Date().getTime();
+		const gap = dday - today;
+		const day = Math.floor(gap / (1000 * 60 * 60 * 24));
+		const hour = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const min = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+		const sec = Math.floor((gap % (1000 * 60)) / 1000);
+
+		if(gap<0){
+		document.getElementById("count").innerHTML = 'D-DAY가 지났습니다.'
+	}else{document.getElementById("count").innerHTML = "D-DAY까지 " + day + "일 " + hour + "시간 " + min + "분 " + sec + "초 남았습니다.";
+	}
+}, 1000);
+}
+
+function main() {
+	clearInterval(Time);
+	document.getElementById("count").innerText = "";
+}
+</script>
+	</body>
+	</html>

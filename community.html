@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>익명 게시판</title>
+  <link rel="stylesheet" href="community.css">
+</head>
+<body>
+  <div id="esc">
+    <p id="back">GG</p>
+    <p id="kcalge">칼로리계산기</p>
+    <p id="memob">메모</p>
+    <p id="gesip">커뮤니티</p>
+    <p id="gongji">공지사항</p>
+  </div>
+  <div class="container">
+    <h1>익명 게시판</h1>
+    <div id="message">
+      <h3>새 글 작성</h3>
+      <input type="text" id="title" placeholder="제목" />
+      <textarea id="content" placeholder="내용"></textarea>
+      <button onclick="addPost()">작성</button>
+    </div>
+    <div id="board">
+      <h3>게시물 목록</h3>
+      <div id="apbtpg">
+        <button onclick="apbt()">글쓰기</button>
+    </div>
+      <div id="postList"></div>
+
+    </div>
+  </div>
+  
+
+  <script>
+    
+    let posts = [];
+    window.addEventListener('load', function() {
+  const storedPosts = localStorage.getItem('posts');
+  if (storedPosts) {
+    posts = JSON.parse(storedPosts);
+    Cposts();
+  }
+});
+
+    function addPost() {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      
+
+      if (title.trim() === '') {
+        alert('제목을 입력해주세요.');
+        return;
+      }
+      if(content.trim() === ''){
+        alert('내용을 입력해주세요.')
+        return;
+      }
+
+      const date = new Date().toLocaleString();
+
+      const post = {
+        title: title,
+        content: content,
+        date: date
+      };
+
+      posts.push(post);
+      Cposts();
+      clearB();
+      document.getElementById('message').style.display = "none";
+      document.getElementById('board').style.display = "block";
+      localStorage.setItem('posts', JSON.stringify(posts));
+    }
+
+    function Cposts() {
+      const postList = document.getElementById('postList');
+      postList.innerHTML = '';
+
+      for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
+
+        const postEl = document.createElement('div');
+        postEl.classList.add('post');
+
+        const titleEl = document.createElement('h4');
+        titleEl.textContent = post.title;
+
+        const dateEl = document.createElement('div');
+        dateEl.classList.add('date');
+        dateEl.textContent = post.date;
+
+        const contentEl = document.createElement('div');
+        contentEl.classList.add('content');
+        contentEl.textContent = post.content;
+
+        postEl.appendChild(titleEl);
+        postEl.appendChild(dateEl);
+        postEl.appendChild(contentEl);
+
+        postList.appendChild(postEl);
+      }
+    }
+
+    function clearB() {
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+    }
+    function apbt(){
+      document.getElementById('message').style.display = "block";
+      document.getElementById('board').style.display = "none";
+    }
+    document.getElementById("back").onclick = function() {
+      location.href = "Main.html";
+    };
+    document.getElementById("gongji").onclick = function() {
+      location.href = "gesi.html";
+    };
+    document.getElementById("kcalge").onclick = function() {
+      location.href = "calculator.html";
+};
+    document.getElementById("memob").onclick = function() {
+      location.href = "memo.html";
+};
+    document.getElementById("gesip").onclick = function() {
+      location.href = "community.html";
+};
+
+  </script>
+</body>
+</html>

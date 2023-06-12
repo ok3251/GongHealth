@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>기초대사량</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+  <div id="esc">
+    <p id="back">GG</p>
+    <p id="kcalge">칼로리계산기</p>
+    <p id="memob">메모</p>
+    <p id="gesip">커뮤니티</p>
+    <p id="gongji">공지사항</p>
+  </div>
+	<div class="main">
+        <div id="page1">
+            <h3>기초대사량 계산</h3>
+            <div class="box">
+                성별&nbsp;&nbsp;&nbsp;<select name="성별선택란" id="sex" onchange="handleOnchange(this)">
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option>
+                </select>
+            </div>
+            <div class="box">
+                몸무게<input type="number" id="weight" value="70">
+            </div>
+            <div class="box">
+                키&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="height" value="160">
+            </div>
+            <div class="box">
+                나이&nbsp;&nbsp;&nbsp;<input type="number" id="age" value="20">
+            </div>
+    
+            <input type="submit" value="확인" onclick="setting()">
+            <div id="result"></div>
+            <div id="resultbox">
+                <input type="button" value="다음페이지" onclick="next()">
+            </div>
+        </div>
+            
+	
+		</div>
+		<div id="page2">
+            <h3>오늘의 식단</h3>
+            <div class="meal-container">
+                <h4>아침</h4>
+                라면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="ramen" value="0" class="choice">개 (500Kcal)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="chicken" value="0" class="choice">마리 (2500Kcal)<br>
+                &nbsp;&nbsp;짜장면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="jjajang" value="0" class="choice">그릇 (864Kcal)<br>
+                닭가슴살&nbsp;&nbsp;<input type="number" name="Bfast" id="jjijji" value="0" class="choice">g (1.95Kcal)&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="rice" value="0" class="choice">공기 (313Kcal)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    삶은계란&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="egg" value="0" class="choice">개(80Kcal)&nbsp;&nbsp;&nbsp;<br>
+                찐고구마&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="sweetPotato" value="0" class="choice">개 (114Kcal)<br>
+                프로틴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Bfast" id="protein" value="0" class="choice">스쿱 (103Kcal)<br>
+                <input type="button" value="확인" onclick="bfcheck()"></input>
+                <div id="bfresult"></div>
+            </div>
+        
+            <div class="meal-container">
+                <h4>점심</h4>
+                라면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="ramen" value="0" class="choice">개 (500Kcal)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="chicken" value="0" class="choice">마리 (2500Kcal)<br>
+                &nbsp;&nbsp;짜장면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="jjajang" value="0" class="choice">그릇 (864Kcal)<br>
+                닭가슴살&nbsp;&nbsp;<input type="number" name="Lunch" id="jjijji" value="0" class="choice">g (1.95Kcal)&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="rice" value="0" class="choice">공기 (313Kcal)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    삶은계란&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="egg" value="0" class="choice">개(80Kcal)&nbsp;&nbsp;&nbsp;<br>
+                찐고구마&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="sweetPotato" value="0" class="choice">개 (114Kcal)<br>
+                프로틴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Lunch" id="protein" value="0" class="choice">스쿱 (103Kcal)<br>
+                <input type="button" value="확인" onclick="lccheck()"></input>
+                <div id="lcresult"></div>
+            </div>
+        
+            <div class="meal-container">
+                <h4>저녁</h4>
+                라면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="ramen" value="0" class="choice">개 (500Kcal)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치킨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="chicken" value="0" class="choice">마리 (2500Kcal)<br>
+                &nbsp;&nbsp;짜장면&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="jjajang" value="0" class="choice">그릇 (864Kcal)<br>
+                닭가슴살&nbsp;&nbsp;<input type="number" name="Dinner" id="jjijji" value="0" class="choice">g (1.95Kcal)&nbsp;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;밥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="rice" value="0" class="choice">공기 (313Kcal)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    삶은계란&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="egg" value="0" class="choice">개(80Kcal)&nbsp;&nbsp;&nbsp;<br>
+                찐고구마&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="sweetPotato" value="0" class="choice">개 (114Kcal)<br>
+                프로틴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="Dinner" id="protein" value="0" class="choice">스쿱 (103Kcal)<br>
+                <input type="button" value="확인" onclick="Dncheck()"></input>
+                <div id="Dnresult"></div>
+            </div>
+        
+            <br><br>
+            <input type="button" value="오늘 최종 칼로리 확인하기" onclick="lastcheck()">
+            <div id="lastresult"></div>
+            <br><br><br>
+            <input type="button" value="이전페이지" onclick="before()">
+            <input type="button" value="다음페이지" onclick="next2()">
+        </div>
+		<div id="page3">
+            <h3>오늘의 운동</h3>
+        
+            <div class="exercise-container">
+                <h4>걷기</h4>
+                <input type="number" id="walktime" value="60">분
+                <input type="button" value="계산" onclick="wkcheck()">
+                <div id="wkresult"></div>
+            </div>
+        
+            <div class="exercise-container">
+                <h4>줄넘기</h4>
+                <input type="number" id="jultime" value="60">분
+                <input type="button" value="계산" onclick="julcheck()">
+                <div id="julresult"></div>
+            </div>
+        
+            <div class="exercise-container">
+                <h4>달리기</h4>
+                <input type="number" id="runtime" value="60">분
+                <input type="button" value="계산" onclick="runcheck()">
+                <div id="runresult"></div>
+            </div><br>
+        
+            <input type="button" value="총 소모량" onclick="excheck()">
+            <div id="exresult"></div>
+            <input type="button" value="이전페이지" onclick="before2()">
+            <input type="button" value="한눈에 보기" onclick="discribe()"><br>
+        </div>
+		<div id="lastpage">
+            <h1>요약</h1>
+			<div id="gichoresult"></div>
+			<div id="foodresult"></div>
+			<div id="exerciseresult"></div>
+            <div id="findis"></div><br>
+			<input type="button" value="처음으로" onclick="Gofirst()">
+		</div>
+	</div>
+
+	<script>
+const foodCalories = {
+  ramen: 500,
+  chicken: 2500,
+  jjajang: 864,
+  jjijji: 2,
+  rice: 313,
+  egg: 80,
+  sweetPotato: 114,
+  protein: 103,
+};
+
+let gicho;
+let Bfsum = 0;
+let lcsum = 0;
+let dnsum = 0;
+let lastsum = 0;
+let weight = 0;
+let walksum;
+let julsum;
+let runsum;
+let exsum;
+let finaldis;
+
+function setting() {
+	weight=0;
+  weight += document.getElementById('weight').value;
+  const height = document.getElementById('height').value;
+  const age = document.getElementById('age').value;
+  const sex = document.getElementById('sex').value;
+
+  if (sex === '남자') {
+    gicho = 10 * weight + 6.25 * height - 5 * age + 5;
+    document.getElementById('result').innerText = `기초대사량은 ${gicho} 입니다.`;
+  } else if (sex === '여자') {
+    gicho = 10 * weight + 6.25 * height - 5 * age - 161;
+    document.getElementById('result').innerText = `기초대사량은 ${gicho} 입니다.`;
+  }
+}
+
+function next() {
+  if (gicho === undefined) {
+    alert('기초대사량을 확인해주세요');
+  } else {
+    document.getElementById('page1').style.display = 'none';	
+    document.getElementById('page2').style.display = 'block';
+  }
+}
+
+function before() {
+  document.getElementById('page1').style.display = 'block';
+  document.getElementById('page2').style.display = 'none';
+}
+
+function next2(){
+	document.getElementById('page3').style.display = 'block';
+	document.getElementById('page2').style.display = 'none';
+}
+function before2(){
+	document.getElementById('page3').style.display = 'none';
+	document.getElementById('page2').style.display = 'block';
+}
+function discribe(){
+    finaldis = lastsum-gicho-exsum;
+	document.getElementById('lastpage').style.display = 'block';
+	document.getElementById('page3').style.display = 'none';
+	document.getElementById('gichoresult').innerText = `기초대사량 \n\n ${gicho}`;
+	document.getElementById('foodresult').innerText = `총 섭취량 \n\n ${lastsum}`;
+	document.getElementById('exerciseresult').innerText = `총 운동량 \n\n${exsum}`;
+    document.getElementById('findis').innerText = `오늘 총 칼로리 \n\n${finaldis}`;
+}
+function Gofirst(){
+	document.getElementById('lastpage').style.display = 'none';
+	document.getElementById('page1').style.display = 'block';
+}
+
+function bfcheck() {
+  const Bfast = document.getElementsByName('Bfast');
+  Bfsum = 0;
+
+  for (let i = 0; i < Bfast.length; i++) {
+    const foodId = Bfast[i].id;
+    const quantity = parseInt(Bfast[i].value);
+    const caloriePerItem = foodCalories[foodId];
+    const totalCalories = quantity * caloriePerItem;
+    Bfsum += totalCalories;
+  }
+
+  document.getElementById('bfresult').innerText = `아침에 섭취한 칼로리: ${Bfsum}Kcal`;
+}
+
+function lccheck() {
+  const Lunch = document.getElementsByName("Lunch");
+  lcsum = 0;
+
+  for (let i = 0; i < Lunch.length; i++) {
+    const foodId = Lunch[i].id;
+    const quantity = parseInt(Lunch[i].value);
+    const caloriePerItem = foodCalories[foodId];
+    const totalCalories = quantity * caloriePerItem;
+    lcsum += totalCalories;
+  }
+
+  document.getElementById('lcresult').innerText = `점심에 섭취한 칼로리: ${lcsum}Kcal`;
+}
+
+function Dncheck() {
+  const Dinner = document.getElementsByName("Dinner");
+  dnsum = 0;
+
+  for (let i = 0; i < Dinner.length; i++) {
+    const foodId = Dinner[i].id;
+    const quantity = parseInt(Dinner[i].value);
+    const caloriePerItem = foodCalories[foodId];
+    const totalCalories = quantity * caloriePerItem;
+    dnsum += totalCalories;
+  }
+
+  document.getElementById('Dnresult').innerText = `저녁에 섭취한 칼로리: ${dnsum}Kcal`;
+}
+
+function lastcheck() {
+  lastsum = Bfsum + lcsum + dnsum;
+  document.getElementById('lastresult').innerText = `오늘 먹은 칼로리: ${lastsum}Kcal 입니다.`;
+}
+
+function wkcheck(){
+	const walktime = document.getElementById('walktime').value;
+	walksum = ((weight/60)*walktime*4);
+	document.getElementById('wkresult').innerText = `걷기로 소모한 칼로리는 ${walksum}Kcal 입니다`;
+}
+function julcheck(){
+	const jultime = document.getElementById('jultime').value;
+	julsum = (weight/60)*jultime*10.5;
+	document.getElementById('julresult').innerText = `줄넘기로 소모한 칼로리는 ${julsum}Kcal 입니다`;
+}
+function runcheck(){
+	const runtime = document.getElementById('runtime').value;
+	runsum = (weight/60)*runtime*7.3;
+	document.getElementById('runresult').innerText = `달리기로 소모한 칼로리는 ${runsum}Kcal 입니다.`;
+}
+function excheck(){
+	exsum = walksum + julsum + runsum;
+	document.getElementById('exresult').innerText = `총 소모하신 칼로리는 ${exsum}Kcal 입니다.`;
+}
+document.getElementById("back").onclick = function() {
+  location.href = "Main.html";
+};
+document.getElementById("gongji").onclick = function() {
+  location.href = "gesi.html";
+};
+document.getElementById("kcalge").onclick = function() {
+  location.href = "calculator.html";
+};
+document.getElementById("memob").onclick = function() {
+  location.href = "memo.html";
+};
+document.getElementById("gesip").onclick = function() {
+  location.href = "community.html";
+};
+	</script>
+</body>
+</html>

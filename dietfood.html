@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style-size.css">
+    <link rel="stylesheet" type="text/css" href="style-layout.css">
+    <link rel="stylesheet" type="text/css" href="style-presentation2.css">
+    <script src="modal_calculator.js" defer></script>
+    <script src="D_day.js" defer></script>
+    <script src="modal_login.js" defer></script>
+    <script src="fade_in_top.js" defer></script>
+    <script src="date.js" defer></script>
+    <title>헬스케어 웹사이트</title>
+    <style>
+      #extitles, #explain{
+        color:rgb(45, 182, 59);
+      }
+    </style>
+</head>
+<body style="height:100vh;">
+    <div class="wrap">
+        <header id="header">
+            <div class="flex-box">
+            <a id="logo" href="main.html"> GG </a>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">운동 종류</a>
+                            <ul class="submenu">
+                                <li><a href="diet.html">다이어트</a></li>
+                                <li><a href="weight.html">근력 운동</a></li>
+                                <li><a href="usanso.html">유산소 운동</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영양 정보</a>
+                            <ul class="submenu">
+                                <li><a href="dietfood.html">좋은식단</a></li>
+                                <li><a href="worstfood.html">안좋은식단</a></li>
+                                <li><a href="calculator.html"id="openmodal_calculator">칼로리 계산기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="memo.html">나의 메모</a>
+                        </li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                        <li><a href="gesi.html">공지사항</a></li>
+                        <li><a href="u" id="openprompt_D_day" onclick="D_day()">D-DAY:</a></li>
+                        <li class="between"><span id="count"></span></li>
+                        <li class="right"><a href="#" id="openmodal_login" onclick="openLoginModal()">로그인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="modalpage_login" class="hidden">
+            <div id="modalcenter_login">
+                <form id="login-form" onsubmit="submitLoginForm(event)">
+                    <h1>LOGIN</h1>
+                    <input id="username" type="email" placeholder="Email" class="input">
+                    <input id="password" type="password" placeholder="password" class="input">
+                    <button type="submit">Login</button>
+                </form>
+                <span id="closemodal_login" onclick="closeLoginModal()">&times;</span>
+            </div>
+    </div>
+        <div class="photo">
+          <div class="photos">
+            <img src="닭가슴살.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">닭가슴살</div>
+          <div class="photos" id="explain">
+            닭가슴살은 저지방이면서 단백질이 풍부하여 다이어트 식단에<br>  적합합니다. 그린이나 오븐에서 조리하여 먹을 수 있습니다.
+          </div>
+          <div class="photos">
+            <img src="삶은계란.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">계란</div>
+          <div class="photos" id="explain">
+            계란은 단백질이 풍부하고 다양한 영양소를 함유한 식품입니다.<br> 달걀 흰자만 또는 노른자를 섞어 섭취하는것도 좋은 방법입니다.
+        </div>
+          <div class="photos">
+            <img src="채소.webp" alt="">
+          </div>
+          <div class="photos" id="extitles">채소</div>
+          <div class="photos" id="explain">
+            채소는 칼로리가 낮으면서 영양소가 풍부한 식품입니다<br> 녹색채소(시금치,케일,브로콜리)와 같은 다양한 색상의 채소<br>(당근,토마토,파프리카)를 다양하게 섭취하는것이 좋습니다.
+          </div>
+          <div class="photos">
+            <img src="견과류.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">견과류</div>
+          <div class="photos" id="explain">
+            적정량의 견과류는 단백질, 좋은지방, 식이섬유를 공급하여<br>포만감을 높이고 영양소를 공급합니다. 아몬드,호두,캐슈너트<br> 등이 있습니다.
+          </div>
+          <div class="photos">
+            <img src="과일.webp" alt="">
+          </div>
+          <div class="photos" id="extitles">과일</div>
+          <div class="photos" id="explain">
+            과일은 자연스러운 당분과 영양소가 풍부하여 건강한 간식으로<br>매우 좋습니다. 사과,딸기,블루베리,오렌지 등이 있습니다.
+          </div>
+
+        </div>
+        
+
+</body>
+</html>

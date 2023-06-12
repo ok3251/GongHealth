@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style-size.css">
+    <link rel="stylesheet" type="text/css" href="style-layout.css">
+    <link rel="stylesheet" type="text/css" href="style-presentation2.css">
+    <script src="modal_calculator.js" defer></script>
+    <script src="D_day.js" defer></script>
+    <script src="modal_login.js" defer></script>
+    <script src="fade_in_top.js" defer></script>
+    <script src="date.js" defer></script>
+    <title>헬스케어 웹사이트</title>
+    <style>
+      #extitles, #explain{
+        color:rgb(225, 105, 191);
+      }
+    </style>
+</head>
+<body style="height:100vh;">
+    <div class="wrap">
+        <header id="header">
+            <div class="flex-box">
+            <a id="logo" href="main.html"> GG </a>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#"">운동 종류</a>
+                            <ul class="submenu">
+                                <li><a href="diet.html">다이어트</a></li>
+                                <li><a href="weight.html">근력 운동</a></li>
+                                <li><a href="usanso.html">유산소 운동</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영양 정보</a>
+                            <ul class="submenu">
+                                <li><a href="dietfood.html">좋은식단</a></li>
+                                <li><a href="worstfood.html">안좋은 식단</a></li>
+                                <li><a href="calculator.html"id="openmodal_calculator">칼로리 계산기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="memo.html">나의 메모</a>
+                        </li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                        <li><a href="gesi.html">공지사항</a></li>
+                        <li><a href="u" id="openprompt_D_day" onclick="D_day()">D-DAY:</a></li>
+                        <li class="between"><span id="count"></span></li>
+                        <li class="right"><a href="#" id="openmodal_login" onclick="openLoginModal()">로그인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="modalpage_login" class="hidden">
+            <div id="modalcenter_login">
+                <form id="login-form" onsubmit="submitLoginForm(event)">
+                    <h1>LOGIN</h1>
+                    <input id="username" type="email" placeholder="Email" class="input">
+                    <input id="password" type="password" placeholder="password" class="input">
+                    <button type="submit">Login</button>
+                </form>
+                <span id="closemodal_login" onclick="closeLoginModal()">&times;</span>
+            </div>
+    </div>
+        <div class="photo">
+          <div class="photos">
+            <img src="걷기.webp" alt="">
+          </div>
+          <div class="photos" id="extitles">1. 걷기</div>
+          <div class="photos" id="explain">
+            걷기는 일상생활의 절반을 차지하는 운동입니다.<br> 어디서든 할수있으며 부상위험이 적은 운동입니다.<br>
+            평상시와 똑같이 걸으면 근육강화나 심장단련의<br> 효과를 볼수 없으므로 속도를 높이고 보폭을 키워야합니다.<br>
+            숨이 조금 가쁜정도의 빠르기로 걷는것부터 시작해보세요!
+          </div>
+          <div class="photos">
+            <img src="조깅.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">2. 달리기(조깅)</div>
+          <div class="photos" id="explain">
+            조깅은 느린 속도로 달리는 유산소 운동입니다.<br>
+            주 목적인 빨리 달리는 것에 비해 몸에 압박을 덜 주면서<br>피트니스를 향상시키는 것입니다 또, 장시간 꾸준한 속도로<br>
+            달리기를 하면서 페이스를 유지시키기 위함입니다.
+        </div>
+          <div class="photos">
+            <img src="자전거 타기.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">3. 자전거 타기</div>
+          <div class="photos" id="explain">
+            자전거 타기는 심폐지구력을 강화하는데 좋은<br>대표적인 유산소 운동중에 하나입니다. 발목과 무릎에<br>
+            충격을 줄 수 있는 달리기와 같은 유산소 운동과는 달리<br> 오히려 발목, 무릎관절을 강화하는데 도움이 됩니다.<br>
+          </div>
+          <div class="photos">
+            <img src="등산.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">4. 등산</div>
+          <div class="photos" id="explain">
+            등산은 말 그대로 산을 오르는것을 뜻합니다. 때로는 등산이<br>
+            심장질환이나 관절염, 허리디스크, 비만이 있는 분들은<br>등산이 안좋을 수도 있습니다. 하지만 일반인 분들이나<br> 경미한 건강질환을 가진 분들이 장기간에 걸쳐 규칙적으로<br>
+            등산을 하게되면 각종 질병을 적절히 예방할 수 있습니다.
+          </div>
+          <div class="photos">
+            <img src="수영.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">5. 수영</div>
+          <div class="photos" id="explain">
+            수영은 물에서 나아가기 위해 손발을 움직이는 행위를 뜻합니다.<br>
+            물에만 가만히 있어도 영양분의 연소효과가 상당하게 생기게<br> 되는데 헤엄이라는 형태로 운동까지 하게되면 지방까지 연소<br>되기 시작하면서 다이어트의 효과가 극대화됩니다.
+          </div>
+
+        </div>
+        
+
+</body>
+</html>

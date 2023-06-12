@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style-size.css">
+    <link rel="stylesheet" type="text/css" href="style-layout.css">
+    <link rel="stylesheet" type="text/css" href="style-presentation2.css">
+    <script src="modal_calculator.js" defer></script>
+    <script src="D_day.js" defer></script>
+    <script src="modal_login.js" defer></script>
+    <script src="fade_in_top.js" defer></script>
+    <script src="date.js" defer></script>
+    <title>헬스케어 웹사이트</title>
+    <style>
+      #extitles, #explain{
+        color:rgb(255, 47, 47);
+      }
+    </style>
+</head>
+<body style="height:100vh;">
+    <div class="wrap">
+        <header id="header">
+            <div class="flex-box">
+            <a id="logo" href="main.html"> GG </a>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#" >운동 종류</a>
+                            <ul class="submenu">
+                                <li><a href="diet.html">다이어트</a></li>
+                                <li><a href="weight.html">근력 운동</a></li>
+                                <li><a href="usanso.html">유산소 운동</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영양 정보</a>
+                            <ul class="submenu">
+                                <li><a href="dietfood.html">좋은식단</a></li>
+                                <li><a href="worstfood.html">안좋은식단</a></li>
+                                <li><a href="calculator.html"id="openmodal_calculator">칼로리 계산기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="memo.html">나의 메모</a>
+                        </li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                        <li><a href="gesi.html">공지사항</a></li>
+                        <li><a href="u" id="openprompt_D_day" onclick="D_day()">D-DAY:</a></li>
+                        <li class="between"><span id="count"></span></li>
+                        <li class="right"><a href="#" id="openmodal_login" onclick="openLoginModal()">로그인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="modalpage_login" class="hidden">
+            <div id="modalcenter_login">
+                <form id="login-form" onsubmit="submitLoginForm(event)">
+                    <h1>LOGIN</h1>
+                    <input id="username" type="email" placeholder="Email" class="input">
+                    <input id="password" type="password" placeholder="password" class="input">
+                    <button type="submit">Login</button>
+                </form>
+                <span id="closemodal_login" onclick="closeLoginModal()">&times;</span>
+            </div>
+    </div>
+        <div class="photo">
+          <div class="photos">
+            <img src="패스트푸드.webp" alt="">
+          </div>
+          <div class="photos" id="extitles">패스트푸드</div>
+          <div class="photos" id="explain">
+            패스트푸드는 고지방,고나트륨,고칼로리 음식이 많기때문에<br>다이어트에 부적합합니다. 햄버거,감자튀김,치킨너겟 등은<br>주의해야 할 식품입니다.
+          </div>
+          <div class="photos">
+            <img src="과자.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">고지방/고당도 스낵</div>
+          <div class="photos" id="explain">
+            과자,초콜릿,사탕 등 고당도 스낵은 칼로리가 높고 영양소가<br> 부족합니다. 또한 지방함량이 높을 수 있습니다.
+        </div>
+          <div class="photos">
+            <img src="소주.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">알코올</div>
+          <div class="photos" id="explain">
+            알코올은 칼로리가 높고 영양가가 낮아 다이어트에 부적합합니다.<br>술에는 많은 칼로리가 함유되어 있으며, 음주는 식욕을 자극하여<br> 과식을 유발할 수 있습니다.
+          </div>
+          <div class="photos">
+            <img src="아이스크림.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">단 음식</div>
+          <div class="photos" id="explain">
+            단 음식은 과도한 설탕을 함유하고 있어 다이어트에 좋지 않습니다.<br>케이크, 쿠키, 아이스크림 등 단 음식은 섭취를 제한해야 합니다.
+          </div>
+          <div class="photos">
+            <img src="빵.jpg" alt="">
+          </div>
+          <div class="photos" id="extitles">고탄수화물 식품</div>
+          <div class="photos" id="explain">
+            백미,백색 빵,쿠키,과자 등의 고탄수화물 식품은 속쓰림을 유발하고<br>혈당을 급격하게 올릴 수 있어 다이어트에 적합하지 않습니다.
+          </div>
+
+        </div>
+        
+
+</body>
+</html>

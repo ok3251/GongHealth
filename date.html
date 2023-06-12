@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+		<div class="day1">
+			<h3>우리가 만난날</h3>
+      년도<input type="number" id="year" value="2023"><br>
+			월&nbsp;&nbsp;&nbsp;<input type="number" id="month" max="12" min="1" value="01"><br>
+			일&nbsp;&nbsp;&nbsp;<input type="number" id="day" max="31" min="1" value="01">
+      <input type="submit" value="확인" onclick="setting()">
+			<h3>우리가 만난지</h3>
+			<p id="pass"></p>
+		</div>
+		<h3>기념일</h3>
+		<div class="day2">
+			<p id="date100"></p>
+			<p id="date1"></p>
+			<p id="date2"></p>
+			<p id="date3"></p>
+		</div>
+	</div>
+  <script>
+    function setting(){
+	const year = document.getElementById('year').value;
+	const month = document.getElementById('month').value;
+	const day = document.getElementById('day').value;
+
+    const now = new Date();
+const firstDay = new Date(year,month-1,day);
+const toNow = now.getTime(); 
+const toFirst = firstDay.getTime();
+const passedTime = toNow - toFirst;
+const passedDay = Math.round(passedTime / (1000 * 60 * 60 * 24));
+document.getElementById("pass").innerText = `${passedDay}일`;
+
+calcDate(100);
+calcDate(365);
+calcDate(731);
+calcDate(1096);
+
+function calcDate(day) {
+    const future = toFirst + day * (1000 * 60 * 60 * 24); 
+    const someday = new Date(future);
+    const Fyear = someday.getFullYear();
+    const Fmonth = someday.getMonth() + 1;
+    const Fday = someday.getDate();
+		if(day==100){
+			document.getElementById("date100").innerText = `100일 = ${Fyear}년 ${Fmonth}월 ${Fday}일`;
+		}else if(day==365){
+			document.getElementById("date1").innerText = `1년 = ${Fyear}년 ${Fmonth}월 ${Fday}일`;
+		}else if(day==731){
+			document.getElementById("date2").innerText = `2년 = ${Fyear}년 ${Fmonth}월 ${Fday}일`;
+		}
+		else if(day ==1096){
+			document.getElementById("date3").innerText = `3년 = ${Fyear}년 ${Fmonth}월 ${Fday}일`;
+		}
+
+    
+}
+    }
+  </script>
+</body>
+</html>

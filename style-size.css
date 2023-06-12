@@ -1,0 +1,137 @@
+header {
+    width: 100%;
+    height: 8.5%;
+    top: 0;
+    left: 0;
+}
+header .flex-box{
+    width:100%;
+    height:100%;
+}
+
+#logo {
+    width: 75px;
+    height: 50px;
+}
+
+header nav {
+    width: 85%;
+    height: 100%;
+    top: 0;
+    left:15%;
+}
+
+.menu {
+    width: 100%;
+    height: 100%;
+}
+
+.menu li {
+    height: 100%;
+    width: 10%;
+}
+
+.menu li a {
+    height:100%;
+}
+
+.menu .between{
+    width:20%;
+    height: auto;
+}
+
+.menu .right{
+    width:10%;
+}
+
+#modalpage_calculator{
+    width: 100%;
+    height: 100%;
+}
+
+#modalcenter_calculator{
+    width: 25%;
+    height: 450px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#modalpage_login {
+    width: 100%;
+    height: 100%;
+}
+
+#modalcenter_login {
+    width: 25%;
+    height: 450px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.box {
+    width: 634.33px;
+    height: 951.495px;
+}
+
+.img-cover{
+    width: 100%;
+    height: 951.495px;
+}
+
+#hero {
+    top: 350px;
+    left: 500px;
+}
+
+#introduce {
+    width: 100%;
+    height: 15%;
+}
+
+#introduction {
+    width: 100%;
+    height: auto;
+}
+
+.introduction {
+    width: 100%;
+    height: auto;
+}
+
+.color-box_1 {
+    width: 600px;
+    height: 600px;
+}
+
+#introduction img {
+    width: 800px;
+    height: 450px;
+}
+
+.color-box_2 {
+    width: 490px;
+    height: 490px;
+}
+
+.core-color-box{
+    width: 1524.34px;
+    height: 328px;
+}
+
+.routine-card img, .diary-card img, .nutrition-card img, .community-card img {
+    width: 420.75px;
+    max-width: 420.75px;
+    height: 420px;
+    max-height: 420px;
+}
+
+footer {
+    height: 30px;
+    bottom: 0;
+}
+
+#login fieldset span {
+    width: 30px;
+}

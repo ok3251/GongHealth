@@ -1,0 +1,553 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to top right, #f5f7f7 30% , #22282c 80%) ;
+    background-size: 100% 200%;
+    display: flex;
+}
+
+img{
+    border:none;
+}
+
+header{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: linear-gradient(to right, #888c8f, #000407 9%);
+    transition-timing-function: 0.5s;
+    display: block;
+}
+
+header .flex-box{
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a{
+    text-decoration: none;
+}
+
+#logo{
+    color: #f5f7f7;
+    font-size: 62px;
+    align-self:stretch;
+}
+
+header nav {
+    background:black;
+    border-bottom-right-radius: 20px;
+    display: flex;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    display: inline-block;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+.menu li:hover{
+    list-style:none; 
+    background: linear-gradient(to right, #408fc4, #e0e5e9);
+}
+
+.menu li:hover .submenu {
+    width: 100%;
+    height: 250px;
+    transition-duration: 1s;
+    flex-direction: column;
+}
+
+.menu a {
+    color: #e0e5e9;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+.menu a:hover {
+    color: #000407;
+    text-decoration: underline;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.menu .between{
+    transition-property: none;
+    background: black;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    font-size: 28px;
+    text-align: center;
+    display: flex;
+    justify-content:center
+}
+
+.menu .right{
+    border-bottom-right-radius: 20px;
+}
+
+.menu .right:hover{
+    border-bottom-right-radius: 20px;
+    background-color: #408fc4;
+}
+
+.submenu li {
+    line-height: 10px;
+    background: linear-gradient(to right, #408fc4, #e0e5e9);
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+.submenu li:hover{
+    background: linear-gradient(to right, #408fc4, #77afd4);
+}
+
+.submenu a {
+    font-size: 20px;
+    width: 100%;
+    color: #000407;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.submenu a:hover {
+    font-size: 20px;
+    width: 100%;
+    color: #e0e5e9;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.submenu {
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    display:flex
+}
+
+#modalpage_calculator {
+    justify-content: center;
+    align-items: center;
+    background:rgba(0, 0, 0, 0.5);
+}
+
+#modalcenter_calculator {
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #e0e5e9;
+    animation: fade-in 0.3s ease-in-out;
+}
+
+#closemodal_calculator {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#closemodal_calculator:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalpage_login {
+    justify-content: center;
+    align-items: center;
+    background:rgba(0, 0, 0, 0.5);
+}
+
+#modalcenter_login {
+    text-decoration: none;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    background-color: #e0e5e9;
+    animation: fade-in 0.3s ease-in-out;
+    display: flex;
+}
+
+#modalpage_login h2 {
+    font-size: 24px;
+}
+
+#modalpage_login p {
+    font-size: 16px;
+}
+
+#modalcenter_login form input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#modalcenter_login form button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: black;
+    color: #f5f7f7;
+    border: 1px solid #408fc4;
+    border-radius: 20px;
+    cursor: pointer;
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+#modalcenter_login form button:hover {
+    color: #000407;
+    font-weight: bold;
+    background: linear-gradient(to right, #408fc4, #142862);
+}
+
+#closemodal_login {
+    display: flex;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#closemodal_login:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fade-out {
+    animation: fade-out 0.3s ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+    opacity: 1;
+    }
+    to {
+    opacity: 0;
+    }
+}
+
+.box {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box:nth-child(1) {
+    background-image: url(diet.jpg);
+}
+
+.box:nth-child(2) {
+    background-image: url(run.jpg);
+}
+
+.box:nth-child(3) {
+    background-image: url(sleep.jpg);
+}
+
+.img-cover{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#bottom-sheet {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    z-index: 12;
+    background-color: rgba(0,0,0,0.4);
+    animation: fade-in 0.3s ease-in-out;
+}
+
+#bottom-sheet-content.slide-in {
+    animation-name: slideIn;
+}
+#bottom-sheet-content.slide-out {
+    animation-name: slideOut;
+}
+
+#bottom-sheet-content {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    width: 450px;
+    height: 800px;
+    z-index: 12;
+    padding: 30px;
+    margin: 0 auto;
+    border: 1px solid #777;
+    background-color: black;
+    animation: 0.3s ease-in-out;
+}
+
+#bottom-sheet h3 {
+    margin-top: 0;
+}
+
+#bottom-sheet_open {
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 12;
+    background-color: #aaa;
+}
+
+#bottom-sheet_close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bottom-sheet_close:hover {
+    color: pink;
+    text-decoration: none;
+}
+
+.anniversary_container h1,.day1,.day2 p{
+    color:lightpink;
+}
+
+@keyframes slideIn {
+    from {
+    transform: translateY(100%);
+    }
+    to {
+    transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+    transform: translateY(0);
+    }
+    to {
+    transform: translateY(100%);
+    }
+}
+
+.anniversary_container{
+    width: 100%;
+    height: 100%;
+    
+    align-items: center;
+    text-align: center;
+}
+
+#hero{
+    color:#f5f7f7;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 77px;
+}
+
+#hidden {
+    font-size: 27px;
+}
+
+.cta-button {
+    background: linear-gradient(to right, #888c8f 75%, #000407);
+    color: #f5f7f7;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    transition-property: background-color,color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}
+
+.cta-button:after{
+    content: "→";
+    animation-name: slide;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.cta-button:hover {
+    background: linear-gradient(to right, #408fc4, #77afd4);
+    color: #000407;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.fade-in-element-top {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fade-in-element-top.fade-in {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeinTop 0.7s ease-in-out;
+}
+
+.fade-in-element-right {
+    opacity: 2;
+    visibility: hidden;
+}
+
+.fade-in-element-right.fade-in {
+    opacity: 3;
+    visibility: visible;
+    animation: fadeinRight 0.7s ease-in-out;
+}
+
+.introduce {
+    flex-direction: column;
+    text-align: center;
+}
+
+.introduce p {
+    font-size: 30px;
+    color: #e0e5e9;
+}
+
+.color-box_1 {
+    background: linear-gradient(to right, #142862, #22282c);
+}
+
+.color-box_2 {
+    background: linear-gradient(to top right, #142862, #22282c 65%);
+}
+
+.introductiontext {
+    color:#f5f7f7;
+    align-items: center;
+}
+
+.introductiontext h2 {
+    font-size: 29px;
+}
+
+.introductiontext p {
+    font-size: 17px;
+    letter-spacing: 1pt;
+}
+
+
+@keyframes fadeinTop {
+    0% {
+        opacity: 0;
+        transform: translate3d( 0, 5%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+@keyframes fadeinRight {
+    0% {
+      opacity: 2;
+      transform: translate3d(-5%, 0, 0);
+    }
+    to {
+      opacity: 3;
+      transform: translateZ(0);
+    }
+}
+
+.core-container{
+    flex-direction:column;
+}
+
+.core-color-box{
+    background: linear-gradient(to right, #888c8f, #000407);
+}
+
+.core-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 62px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.routine-card, .diary-card, .nutrition-card, .community-card {
+    text-align: center;
+}
+
+footer {
+    background-color: #000407;
+    text-align: center;
+    color: #f5f7f7;
+}
+
+footer p {
+    color: #f5f7f7;
+}
+
+.scroll-target {
+    scroll-snap-align: start;
+}

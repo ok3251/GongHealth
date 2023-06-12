@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style-size.css">
+    <link rel="stylesheet" type="text/css" href="style-layout.css">
+    <link rel="stylesheet" type="text/css" href="style-presentation2.css">
+    <script src="modal_calculator.js" defer></script>
+    <script src="D_day.js" defer></script>
+    <script src="modal_login.js" defer></script>
+    <script src="fade_in_top.js" defer></script>
+    <script src="date.js" defer></script>
+    <title>헬스케어 웹사이트</title>
+    <style>
+      #extitles, #explain{
+        color:rgb(27, 212, 215);
+      }
+    </style>
+</head>
+<body style="height:100vh;">
+    <div class="wrap">
+        <header id="header">
+            <div class="flex-box">
+            <a id="logo" href="main.html"> GG </a>
+                <nav>
+                    <ul class="menu">
+                        <li>
+                            <a href="#">운동 종류</a>
+                            <ul class="submenu">
+                                <li><a href="diet.html">다이어트</a></li>
+                                <li><a href="weight.html">근력 운동</a></li>
+                                <li><a href="usanso.html">유산소 운동</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">영양 정보</a>
+                            <ul class="submenu">
+                                <li><a href="dietfood.html">좋은식단</a></li>
+                                <li><a href="worstfood.html">안좋은식단</a></li>
+                                <li><a href="calculator.html"id="openmodal_calculator">칼로리 계산기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="memo.html">나의 메모</a>
+                        </li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                        <li><a href="gesi.html">공지사항</a></li>
+                        <li><a href="#" id="openprompt_D_day" onclick="D_day()">D-DAY:</a></li>
+                        <li class="between"><span id="count"></span></li>
+                        <li class="right"><a href="#" id="openmodal_login" onclick="openLoginModal()">로그인</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div id="modalpage_login" class="hidden">
+            <div id="modalcenter_login">
+                <form id="login-form" onsubmit="submitLoginForm(event)">
+                    <h1>LOGIN</h1>
+                    <input id="username" type="email" placeholder="Email" class="input">
+                    <input id="password" type="password" placeholder="password" class="input">
+                    <button type="submit">Login</button>
+                </form>
+                <span id="closemodal_login" onclick="closeLoginModal()">&times;</span>
+            </div>
+    </div>
+        <div class="photo">
+          <div class="photos">
+            <img src="하프 버피.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">1. 하프버피</div>
+          <div class="photos" id="explain">
+            다리를 어깨너비보다 넓게 벌리고 서서 시작합니다.<br> 무릎을 살짝 구부리고, 손을 가슴앞에 위치하세요.<br>
+            그리고 상체를 숙이면서 손을 바닥에 대는 동시에<br> 다리를 점프하여 플랭크 기본자세를 만듭니다.<br>
+            그런 다음 다시 다리를 점프하여 손목 방향으로 당기고,<br> 상체를 일으키면 1회가 완료됩니다. 1분간 반복하세요.
+          </div>
+          <div class="photos">
+            <img src="팔꿈치 플랭크 트위스트.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">2. 팔꿈치 플랭크 트위스트</div>
+          <div class="photos" id="explain">
+            매트에 팔뚝을 대고 엎드리는 팔꿈치 플랭크 자세로 시작합니다<br>
+            그리고 엉덩이를 왼쪽으로 내렸다가 돌아오고, 오른쪽으로<br>
+            내렸다가 돌아오면 1회가 완료됩니다. 1분동안 엉덩이를 <br>좌우로 움직이면서 운동하세요
+            상체는 무너지지 않도록 균형을 유지합니다.
+        </div>
+          <div class="photos">
+            <img src="플랭크 잭.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">3. 플랭크 잭</div>
+          <div class="photos" id="explain">
+            매트에 손을 대고 엎드리는 기본 자세로 시작하세요.<br> 시선은 바닥을 향하고, 살짝 점프하여 다리를<br>
+            벌렸다가 오므리는 동작을 계속 반복하세요<br>
+            척추 중립을 유지하고, 1분동안 다리를 움직이면서 반복하세요.<br>
+            팔꿈치와 무릎이 구부러지지 않도록 주의합니다.
+          </div>
+          <div class="photos">
+            <img src="사이드 플랭크 변형.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">4. 사이드 플랭크 변형</div>
+          <div class="photos" id="explain">
+            손을 바닥에 대고 엎드리는 플랭크 자세에서 오른손으로<br>
+            버티면서 왼팔을 공중으로 뻗는 사이드 플랭크 자세로<br> 전환합니다. 그리고 원래 자세로 돌아온 다음<br>
+            오른팔을 공중으로 뻗는 사이드 플랭크 자세를 만드세요<br>
+            1분동안 사이드 플랭크 자세를 반복하세요.
+          </div>
+          <div class="photos">
+            <img src="점프스쿼트.gif" alt="">
+          </div>
+          <div class="photos" id="extitles">5. 점프스쿼트</div>
+          <div class="photos" id="explain">
+            다리를 어깨너비보다 넓게 벌린 상태에서 시작합니다.<br> 그리고 무릎을 구부리고 엉덩이를
+            바닥으로 낮추면서<br> 스쿼트를 진행합니다. 그런 다음 일어나면서 점프하여<br> 손을 머리 위로
+            올리고, 손바닥을 붙입니다.<br> 스쿼트 자세와 점프 자세를 반복하면서 1분간 운동하세요.
+          </div>
+
+        </div>
+        
+
+</body>
+</html>

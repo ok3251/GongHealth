@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="gesi.css">
+</head>
+<body>
+    <div id="esc">
+        <p id="back">GG</p>
+        <p id="kcalge">칼로리계산기</p>
+        <p id="memob">메모</p>
+        <p id="gesip">커뮤니티</p>
+        <p id="gongji">공지사항</p>
+    </div>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공대생을 위한 헬스케어 공지사항입니다.</p>
+        </div>
+        <div class="board_list_wrap">
+            <div class="board_list">
+                <div class="top">
+                    <div class="num">번호</div>
+                    <div class="title">제목</div>
+                    <div class="writer">글쓴이</div>
+                    <div class="date">작성일</div>
+                    <div class="count">조회</div>
+                </div>
+                <div>
+                    <div class="num">2</div>
+                    <div class="title" id="title"><a href="view2.html" onclick="inCount2()">간단한 홈페이지 기능 설명</a></div>
+                    <div class="writer">관리자</div>
+                    <div class="date">2023.06.15</div>
+                    <div class ="count" id="count2"></div>
+                </div>
+                <div>
+                    <div class="num">1</div>
+                    <div class="title" id="title"><a href="view1.html" onclick="inCount()">6월 15일 첫 서비스 시작</a></div>
+                    <div class="writer">관리자</div>
+                    <div class="date">2023.06.15</div>
+                    <div class="count" id="count1"></div>
+                </div>
+            </div>
+            <div class="board_page">
+                <a href="#" class="bt first"><<</a>
+                <a href="#" class="bt prev"><</a>
+                <a href="#" class="num on">1</a>
+                <a href="#" class="bt next">></a>
+                <a href="#" class="bt last">>></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        let count = localStorage.getItem('count1') || 0;
+        let countEl1 = document.getElementById('count1');
+
+        function inCount() {
+            count++;
+            upCounts();
+            localStorage.setItem('count1', count);
+        }
+
+        function upCounts() {
+            countEl1.innerText = count;
+        }
+
+        
+        let count2 = localStorage.getItem('count2') || 0;
+        let countEl2 = document.getElementById('count2');
+
+        function inCount2() {
+            count2++;
+            upCounts2();
+            localStorage.setItem('count2', count2);
+        }
+
+        function upCounts2() {
+            countEl2.innerText = count2;
+        }
+
+        
+        window.onload = function() {
+            upCounts();
+            upCounts2();
+        };
+        document.getElementById("back").onclick = function() {
+            location.href = "Main.html";
+};
+        document.getElementById("gongji").onclick = function() {
+            location.href = "gesi.html";
+};
+        document.getElementById("kcalge").onclick = function() {
+            location.href = "calculator.html";
+};
+        document.getElementById("memob").onclick = function() {
+            location.href = "memo.html";
+};
+        document.getElementById("gesip").onclick = function() {
+            location.href = "community.html";
+};
+    </script>
+</body>
+</html> 
