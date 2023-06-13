@@ -24,134 +24,107 @@
       <h3>게시물 목록</h3>
       <div id="apbtpg">
         <button onclick="apbt()">글쓰기</button>
-      </div>
+    </div>
       <div id="postList"></div>
+
     </div>
   </div>
+  
 
   <script>
-const fs = require('fs');
-
-// 데이터를 파일에 쓰는 함수
-function writeToFile(filename, data) {
-  fs.writeFileSync(filename, JSON.stringify(data));
-}
-
-// 파일에서 데이터를 읽는 함수
-function readFromFile(filename) {
-  const data = fs.readFileSync(filename, 'utf-8');
-  return JSON.parse(data);
-}
-
-const filename = 'posts.txt';
-
-// 게시물 데이터를 파일에 저장하는 함수
-function savePostsToFile(posts) {
-  writeToFile(filename, posts);
-}
-
-// 파일에서 게시물 데이터를 읽어오는 함수
-function loadPostsFromFile() {
-  let posts = [];
-
-  try {
-    posts = readFromFile(filename);
-  } catch (error) {
-    console.error('파일을 읽어오는 중 오류가 발생했습니다:', error);
+    
+    let posts = [];
+    window.addEventListener('load', function() {
+  const storedPosts = localStorage.getItem('posts');
+  if (storedPosts) {
+    posts = JSON.parse(storedPosts);
+    Cposts();
   }
-
-  return posts;
-}
-
-let posts = loadPostsFromFile();
-
-window.addEventListener('load', function () {
-  Cposts();
 });
 
-function addPost() {
-  const title = document.getElementById('title').value;
-  const content = document.getElementById('content').value;
+    function addPost() {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      
 
-  if (title.trim() === '') {
-    alert('제목을 입력해주세요.');
-    return;
-  }
-  if (content.trim() === '') {
-    alert('내용을 입력해주세요.');
-    return;
-  }
+      if (title.trim() === '') {
+        alert('제목을 입력해주세요.');
+        return;
+      }
+      if(content.trim() === ''){
+        alert('내용을 입력해주세요.')
+        return;
+      }
 
-  const date = new Date().toLocaleString();
+      const date = new Date().toLocaleString();
 
-  const post = {
-    title: title,
-    content: content,
-    date: date
-  };
+      const post = {
+        title: title,
+        content: content,
+        date: date
+      };
 
-  posts.push(post);
-  savePostsToFile(posts);
-  Cposts();
-  clearB();
-  document.getElementById('message').style.display = 'none';
-  document.getElementById('board').style.display = 'block';
-}
+      posts.push(post);
+      Cposts();
+      clearB();
+      document.getElementById('message').style.display = "none";
+      document.getElementById('board').style.display = "block";
+      localStorage.setItem('posts', JSON.stringify(posts));
+    }
 
-function Cposts() {
-  const postList = document.getElementById('postList');
-  postList.innerHTML = '';
+    function Cposts() {
+      const postList = document.getElementById('postList');
+      postList.innerHTML = '';
 
-  for (let i = 0; i < posts.length; i++) {
-    const post = posts[i];
+      for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
 
-    const postEl = document.createElement('div');
-    postEl.classList.add('post');
+        const postEl = document.createElement('div');
+        postEl.classList.add('post');
 
-    const titleEl = document.createElement('h4');
-    titleEl.textContent = post.title;
+        const titleEl = document.createElement('h4');
+        titleEl.textContent = post.title;
 
-    const dateEl = document.createElement('div');
-    dateEl.classList.add('date');
-    dateEl.textContent = post.date;
+        const dateEl = document.createElement('div');
+        dateEl.classList.add('date');
+        dateEl.textContent = post.date;
 
-    const contentEl = document.createElement('div');
-    contentEl.classList.add('content');
-    contentEl.textContent = post.content;
+        const contentEl = document.createElement('div');
+        contentEl.classList.add('content');
+        contentEl.textContent = post.content;
 
-    postEl.appendChild(titleEl);
-    postEl.appendChild(dateEl);
-    postEl.appendChild(contentEl);
+        postEl.appendChild(titleEl);
+        postEl.appendChild(dateEl);
+        postEl.appendChild(contentEl);
 
-    postList.appendChild(postEl);
-  }
-}
+        postList.appendChild(postEl);
+      }
+    }
 
-function clearB() {
-  document.getElementById('title').value = '';
-  document.getElementById('content').value = '';
-}
-
-function apbt() {
-  document.getElementById('message').style.display = 'block';
-  document.getElementById('board').style.display = 'none';
-}
-
-document.getElementById('back').onclick = function () {
-  location.href = 'index.html';
+    function clearB() {
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+    }
+    function apbt(){
+      document.getElementById('message').style.display = "block";
+      document.getElementById('board').style.display = "none";
+    }
+    document.getElementById("back").onclick = function() {
+      location.href = "index.html";
+    };
+    document.getElementById("gongji").onclick = function() {
+      location.href = "gesi.html";
+    };
+    document.getElementById("kcalge").onclick = function() {
+      location.href = "calculator.html";
 };
-document.getElementById('gongji').onclick = function () {
-  location.href = 'gesi.html';
+    document.getElementById("memob").onclick = function() {
+      location.href = "memo.html";
 };
-document.getElementById('kcalge').onclick = function () {
-  location.href = 'calculator.html';
+    document.getElementById("gesip").onclick = function() {
+      location.href = "community.html";
 };
-document.getElementById('memob').onclick = function () {
-  location.href = 'memo.html';
-};
-document.getElementById('gesip').onclick = function () {
-  location.href = 'community.html';
-};
+
   </script>
 </body>
 </html>
