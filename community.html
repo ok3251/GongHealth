@@ -33,7 +33,7 @@
     let posts = [];
 
     window.addEventListener('load', function () {
-      fetch('https://okok3251.netlify.app/posts')
+      fetch('https://app.netlify.com/authorize')
         .then(response => response.json())
         .then(data => {
           posts = data;
@@ -65,7 +65,7 @@
         date: date
       };
 
-      fetch('https://okok3251.netlify.app/posts', {
+      fetch('https://app.netlify.com/authorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
