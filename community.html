@@ -34,25 +34,29 @@
   <script>
     
     let posts = [];
+
     window.addEventListener('load', function() {
-  const storedPosts = localStorage.getItem('posts');
-  if (storedPosts) {
-    posts = JSON.parse(storedPosts);
-    Cposts();
-  }
-});
+      fetch('https://okok3251.netlify.app/posts')
+        .then(response => response.json())
+        .then(data => {
+          posts = data;
+          Cposts();
+        })
+        .catch(error => {
+          console.error('게시물을 가져오는 중 오류가 발생했습니다:', error);
+        });
+    });
 
     function addPost() {
       const title = document.getElementById('title').value;
       const content = document.getElementById('content').value;
-      
 
       if (title.trim() === '') {
         alert('제목을 입력해주세요.');
         return;
       }
-      if(content.trim() === ''){
-        alert('내용을 입력해주세요.')
+      if (content.trim() === '') {
+        alert('내용을 입력해주세요.');
         return;
       }
 
@@ -64,12 +68,24 @@
         date: date
       };
 
-      posts.push(post);
-      Cposts();
-      clearB();
-      document.getElementById('message').style.display = "none";
-      document.getElementById('board').style.display = "block";
-      localStorage.setItem('posts', JSON.stringify(posts));
+      fetch('https://okok3251.netlify.app/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(post)
+      })
+        .then(response => response.json())
+        .then(data => {
+          posts.push(data);
+          Cposts();
+          clearB();
+          document.getElementById('message').style.display = 'none';
+          document.getElementById('board').style.display = 'block';
+        })
+        .catch(error => {
+          console.error('게시물을 추가하는 중 오류가 발생했습니다:', error);
+        });
     }
 
     function Cposts() {
@@ -105,10 +121,12 @@
       document.getElementById('title').value = '';
       document.getElementById('content').value = '';
     }
-    function apbt(){
-      document.getElementById('message').style.display = "block";
-      document.getElementById('board').style.display = "none";
+
+    function apbt() {
+      document.getElementById('message').style.display = 'none';
+      document.getElementById('board').style.display = 'block';
     }
+    
     document.getElementById("back").onclick = function() {
       location.href = "index.html";
     };
