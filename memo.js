@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.getElementById("back").onclick = function() {
-  location.href = "Main.html";
+  location.href = "index.html";
 };
 document.getElementById("gongji").onclick = function() {
   location.href = "gesi.html";
