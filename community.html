@@ -30,115 +30,128 @@
   </div>
 
   <script>
-    let posts = [];
+const fs = require('fs');
 
-    window.addEventListener('load', function () {
-      fetch('https://app.netlify.com/authorize')
-        .then(response => response.json())
-        .then(data => {
-          posts = data;
-          Cposts();
-        })
-        .catch(error => {
-          console.error('게시물을 가져오는 중 오류가 발생했습니다:', error);
-        });
-    });
+// 데이터를 파일에 쓰는 함수
+function writeToFile(filename, data) {
+  fs.writeFileSync(filename, JSON.stringify(data));
+}
 
-    function addPost() {
-      const title = document.getElementById('title').value;
-      const content = document.getElementById('content').value;
+// 파일에서 데이터를 읽는 함수
+function readFromFile(filename) {
+  const data = fs.readFileSync(filename, 'utf-8');
+  return JSON.parse(data);
+}
 
-      if (title.trim() === '') {
-        alert('제목을 입력해주세요.');
-        return;
-      }
-      if (content.trim() === '') {
-        alert('내용을 입력해주세요.');
-        return;
-      }
+const filename = 'posts.txt';
 
-      const date = new Date().toLocaleString();
+// 게시물 데이터를 파일에 저장하는 함수
+function savePostsToFile(posts) {
+  writeToFile(filename, posts);
+}
 
-      const post = {
-        title: title,
-        content: content,
-        date: date
-      };
+// 파일에서 게시물 데이터를 읽어오는 함수
+function loadPostsFromFile() {
+  let posts = [];
 
-      fetch('https://app.netlify.com/authorize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(post)
-      })
-        .then(response => response.json())
-        .then(data => {
-          posts.push(data);
-          Cposts();
-          clearB();
-          document.getElementById('message').style.display = 'none';
-          document.getElementById('board').style.display = 'block';
-        })
-        .catch(error => {
-          console.error('게시물을 추가하는 중 오류가 발생했습니다:', error);
-        });
-    }
+  try {
+    posts = readFromFile(filename);
+  } catch (error) {
+    console.error('파일을 읽어오는 중 오류가 발생했습니다:', error);
+  }
 
-    function Cposts() {
-      const postList = document.getElementById('postList');
-      postList.innerHTML = '';
+  return posts;
+}
 
-      for (let i = 0; i < posts.length; i++) {
-        const post = posts[i];
+let posts = loadPostsFromFile();
 
-        const postEl = document.createElement('div');
-        postEl.classList.add('post');
+window.addEventListener('load', function () {
+  Cposts();
+});
 
-        const titleEl = document.createElement('h4');
-        titleEl.textContent = post.title;
+function addPost() {
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
 
-        const dateEl = document.createElement('div');
-        dateEl.classList.add('date');
-        dateEl.textContent = post.date;
+  if (title.trim() === '') {
+    alert('제목을 입력해주세요.');
+    return;
+  }
+  if (content.trim() === '') {
+    alert('내용을 입력해주세요.');
+    return;
+  }
 
-        const contentEl = document.createElement('div');
-        contentEl.classList.add('content');
-        contentEl.textContent = post.content;
+  const date = new Date().toLocaleString();
 
-        postEl.appendChild(titleEl);
-        postEl.appendChild(dateEl);
-        postEl.appendChild(contentEl);
+  const post = {
+    title: title,
+    content: content,
+    date: date
+  };
 
-        postList.appendChild(postEl);
-      }
-    }
+  posts.push(post);
+  savePostsToFile(posts);
+  Cposts();
+  clearB();
+  document.getElementById('message').style.display = 'none';
+  document.getElementById('board').style.display = 'block';
+}
 
-    function clearB() {
-      document.getElementById('title').value = '';
-      document.getElementById('content').value = '';
-    }
+function Cposts() {
+  const postList = document.getElementById('postList');
+  postList.innerHTML = '';
 
-    function apbt() {
-      document.getElementById('message').style.display = 'block';
-      document.getElementById('board').style.display = 'none';
-    }
+  for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
 
-    document.getElementById('back').onclick = function () {
-      location.href = 'index.html';
-    };
-    document.getElementById('gongji').onclick = function () {
-      location.href = 'gesi.html';
-    };
-    document.getElementById('kcalge').onclick = function () {
-      location.href = 'calculator.html';
-    };
-    document.getElementById('memob').onclick = function () {
-      location.href = 'memo.html';
-    };
-    document.getElementById('gesip').onclick = function () {
-      location.href = 'community.html';
-    };
+    const postEl = document.createElement('div');
+    postEl.classList.add('post');
+
+    const titleEl = document.createElement('h4');
+    titleEl.textContent = post.title;
+
+    const dateEl = document.createElement('div');
+    dateEl.classList.add('date');
+    dateEl.textContent = post.date;
+
+    const contentEl = document.createElement('div');
+    contentEl.classList.add('content');
+    contentEl.textContent = post.content;
+
+    postEl.appendChild(titleEl);
+    postEl.appendChild(dateEl);
+    postEl.appendChild(contentEl);
+
+    postList.appendChild(postEl);
+  }
+}
+
+function clearB() {
+  document.getElementById('title').value = '';
+  document.getElementById('content').value = '';
+}
+
+function apbt() {
+  document.getElementById('message').style.display = 'block';
+  document.getElementById('board').style.display = 'none';
+}
+
+document.getElementById('back').onclick = function () {
+  location.href = 'index.html';
+};
+document.getElementById('gongji').onclick = function () {
+  location.href = 'gesi.html';
+};
+document.getElementById('kcalge').onclick = function () {
+  location.href = 'calculator.html';
+};
+document.getElementById('memob').onclick = function () {
+  location.href = 'memo.html';
+};
+document.getElementById('gesip').onclick = function () {
+  location.href = 'community.html';
+};
   </script>
 </body>
 </html>
